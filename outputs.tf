@@ -9,3 +9,7 @@ output "external_ip_address_nat" {
 output "internal_ip_address_private" {
   value = yandex_compute_instance.private-instance.network_interface.0.ip_address
 }
+
+output "bucket_domain_name" {
+  value = "http://${yandex_storage_bucket.tenda-bucket.bucket_domain_name}/picture.jpg"
+}
