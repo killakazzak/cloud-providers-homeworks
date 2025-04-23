@@ -1,0 +1,4 @@
+yc_token     = "command: yc iam create-token"
+yc_cloud_id  = "command: yc config list"
+yc_folder_id = "command: yc config list"
+yc_zone      = "ru-central1-a"
