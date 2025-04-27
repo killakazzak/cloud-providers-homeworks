@@ -4,9 +4,16 @@ resource "yandex_iam_service_account" "sa-tenda-storage" {
 }
 
 # Назначение роли storage.editor
-resource "yandex_resourcemanager_folder_iam_member" "bucket-editor" {
+resource "yandex_resourcemanager_folder_iam_member" "storage-editor" {
   folder_id = var.yc_folder_id
   role      = "storage.editor"
+  member    = "serviceAccount:${yandex_iam_service_account.sa-tenda-storage.id}"
+}
+
+# Назначение роли admin
+resource "yandex_resourcemanager_folder_iam_member" "admin" {
+  folder_id = var.yc_folder_id
+  role      = "admin"
   member    = "serviceAccount:${yandex_iam_service_account.sa-tenda-storage.id}"
 }
 
@@ -19,7 +26,7 @@ resource "yandex_iam_service_account_static_access_key" "sa-static-key" {
 resource "yandex_storage_bucket" "tenda-bucket" {
   access_key = yandex_iam_service_account_static_access_key.sa-static-key.access_key
   secret_key = yandex_iam_service_account_static_access_key.sa-static-key.secret_key
-  bucket     = "tenda2025"
+  bucket     = "tenda-netology-bucket"
   acl        = "public-read"
 }
 

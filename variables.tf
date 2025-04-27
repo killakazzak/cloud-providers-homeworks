@@ -21,3 +21,7 @@ variable "yc_zone" {
   description = "Yandex Cloud default zone"
   default     = "ru-central1-a"
 }
+
+variable "lamp-instance-image-id" {
+  default = "fd827b91d99psvq5fjit"
+}

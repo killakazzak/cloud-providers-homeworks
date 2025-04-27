@@ -1,77 +1,77 @@
-resource "yandex_compute_instance" "nat-instance" {
-  name     = "nat-instance"
-  hostname = "nat-instance"
-  zone     = var.yc_zone
-  
-  resources {
-    cores  = 2
-    memory = 2
-  }
+# resource "yandex_compute_instance" "nat-instance" {
+#   name     = "nat-instance"
+#   hostname = "nat-instance"
+#   zone     = var.yc_zone
 
-  boot_disk {
-    initialize_params {
-      image_id = "fd80mrhj8fl2oe87o4e1"
-    }
-  }
+#   resources {
+#     cores  = 2
+#     memory = 2
+#   }
 
-  network_interface {
-    subnet_id  = yandex_vpc_subnet.public.id
-    ip_address = "192.168.10.254"
-    nat        = true
-  }
+#   boot_disk {
+#     initialize_params {
+#       image_id = "fd80mrhj8fl2oe87o4e1"
+#     }
+#   }
 
-  metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
-  }
-}
+#   network_interface {
+#     subnet_id  = yandex_vpc_subnet.public.id
+#     ip_address = "192.168.10.254"
+#     nat        = true
+#   }
 
-resource "yandex_compute_instance" "public-instance" {
-  name     = "public-instance"
-  hostname = "public-instance"
-  zone     = var.yc_zone
-  
-  resources {
-    cores  = 2
-    memory = 2
-  }
+#   metadata = {
+#     ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+#   }
+# }
 
-  boot_disk {
-    initialize_params {
-      image_id = "fd85b6k7esmsatsjb6fr"
-    }
-  }
+# resource "yandex_compute_instance" "public-instance" {
+#   name     = "public-instance"
+#   hostname = "public-instance"
+#   zone     = var.yc_zone
 
-  network_interface {
-    subnet_id = yandex_vpc_subnet.public.id
-    nat       = true
-  }
+#   resources {
+#     cores  = 2
+#     memory = 2
+#   }
 
-  metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
-  }
-}
+#   boot_disk {
+#     initialize_params {
+#       image_id = "fd85b6k7esmsatsjb6fr"
+#     }
+#   }
 
-resource "yandex_compute_instance" "private-instance" {
-  name     = "private-instance"
-  hostname = "private-instance"
-  zone     = var.yc_zone
-  
-  resources {
-    cores  = 2
-    memory = 2
-  }
+#   network_interface {
+#     subnet_id = yandex_vpc_subnet.public.id
+#     nat       = true
+#   }
 
-  boot_disk {
-    initialize_params {
-      image_id = "fd85b6k7esmsatsjb6fr"
-    }
-  }
+#   metadata = {
+#     ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+#   }
+# }
 
-  network_interface {
-    subnet_id = yandex_vpc_subnet.private.id
-  }
+# resource "yandex_compute_instance" "private-instance" {
+#   name     = "private-instance"
+#   hostname = "private-instance"
+#   zone     = var.yc_zone
 
-  metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
-  }
-}
+#   resources {
+#     cores  = 2
+#     memory = 2
+#   }
+
+#   boot_disk {
+#     initialize_params {
+#       image_id = "fd85b6k7esmsatsjb6fr"
+#     }
+#   }
+
+#   network_interface {
+#     subnet_id = yandex_vpc_subnet.private.id
+#   }
+
+#   metadata = {
+#     ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+#   }
+# }
