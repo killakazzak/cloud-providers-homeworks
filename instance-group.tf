@@ -6,7 +6,7 @@ resource "yandex_iam_service_account" "sa-tenda-ig" {
 # Назначение основных ролей для работы с Compute, Network и Load Balancer
 resource "yandex_resourcemanager_folder_iam_member" "roles" {
   for_each = toset([
-    "compute.editor",
+    "editor",
     "vpc.user",
     "load-balancer.admin",
     "iam.serviceAccounts.user"
