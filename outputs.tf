@@ -15,12 +15,12 @@ output "bucket_domain_name" {
   value = "http://${yandex_storage_bucket.tenda-bucket.bucket_domain_name}/picture.jpg"
 }
 
-output "external_load_balancer_ip" {
-  description = "Публичный URL Network Load Balancer"
-  value = yandex_lb_network_load_balancer.load-balancer-tenda.listener.*.external_address_spec[0].*.address[0]
-}
-
-output "application_lb_url" {
-  description = "Публичный URL Application Load Balancer"
-  value       = "http://${tolist(yandex_alb_load_balancer.tenda-alb.listener)[0].endpoint[0].address[0].external_ipv4_address[0].address}"
-}
+#output "external_load_balancer_ip" {
+#  description = "Публичный URL Network Load Balancer"
+#  value = yandex_lb_network_load_balancer.load-balancer-tenda.listener.*.external_address_spec[0].*.address[0]
+#}
+#
+#output "application_lb_url" {
+#  description = "Публичный URL Application Load Balancer"
+#  value       = "http://${tolist(yandex_alb_load_balancer.tenda-alb.listener)[0].endpoint[0].address[0].external_ipv4_address[0].address}"
+#}
